@@ -1,8 +1,8 @@
 {
-  "name": "webdriverio_v5_typescript",
+  "name": "wdio-onesite",
   "version": "1.0.0",
-  "description": "Boilerplate project using version 5 WebdriverIO & TypeScript.",
-  "repository": "https://github.com/jpolley/WebdriverIO_v5_TypeScript",
+  "description": "My onesite project",
+  "repository": "https://github.com/marklewisyoung/wdio-onesite.git",
   "scripts": {
     "test": "wdio",
     "lint": "tslint --fix 'test/**/*.ts' && tslint --fix 'src/**/*.ts'",
