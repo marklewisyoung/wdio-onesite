@@ -1,0 +1,6 @@
+WebdriverIO_v5_TypeScript - https://github.com/jpolley/WebdriverIO_v5_TypeScript
+
+git clone git@github.com:jpolley/WebdriverIO_v5_TypeScript.git
+cd WebdriverIO_v5_TypeScript
+npm install
+npm test

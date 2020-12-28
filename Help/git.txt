@@ -1,0 +1,25 @@
+In github create a new repository
+On the command line:
+git init                                                           // start tracking current directory
+git add -A                                                         // add all files in current directory to staging area, making them available for commit
+git commit -m "first message"                                     // commit your changes
+git remote add origin https://github.com/username/repo-name.git    // add remote repository URL which contains the required details
+git pull origin master                                             // always pull from remote before pushing
+git push -u origin master                                          // publish changes to your remote repository
+
+Project specific instructions from Git...
+…or create a new repository on the command line
+echo "# starter-project" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/youngmarklewis/starter-project.git
+git push -u origin main
+
+git push https://github.com/marklewisyoung/webdriverio-tests.git --force
+
+‘Updates were rejected because the tip of your current branch is behind. hint: its remote 
+counterpart. Integrate the remote changes (e.g.hint: 'git pull ...') before pushing again.’
+If you are ok with losing the buggy commit completely, you can "force" the push
+ (http://stackoverflow.com/questions/5509543/how-do-i-properly-force-a-git-push).

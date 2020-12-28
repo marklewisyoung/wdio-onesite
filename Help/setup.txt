@@ -1,0 +1,29 @@
+1. Java is up to date
+2. Node.js installation
+3. NPM installation
+4. open terminal/command line:
+node -v
+npm -v
+
+4. install VSC editor
+
+5. webdriver setup and installation commands:
+-- npm init
+-- npm install webdriverio --save-dev
+-- npm install @wdio/cli
+-- ./node_modules/.bin/wdio config (set config)
+-- npm install chai --save-dev
+-- npm install chai-webdriverio --save-dev
+-- npm install local-runner --save-dev
+
+6. Add chai config beforeTest in wdio.conf.js
+
+ beforeTest: function () {
+    const chai = require('chai');
+    const chaiWebdriver = require('chai-webdriverio').default;
+    chai.use(chaiWebdriver(browser));
+
+    global.assert = chai.assert;
+    global.should = chai.should;
+    global.expect = chai.expect;
+  },
