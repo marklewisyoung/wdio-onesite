@@ -1,0 +1,5 @@
+Check for out of date npm packages - npm outdated
+Install check updates - npm install -g npm-check-updates
+Run it - ncu -u
+Run update - npm update
+Finally to install - npm install

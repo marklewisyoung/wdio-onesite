@@ -23,3 +23,14 @@ git push https://github.com/marklewisyoung/webdriverio-tests.git --force
 counterpart. Integrate the remote changes (e.g.hint: 'git pull ...') before pushing again.’
 If you are ok with losing the buggy commit completely, you can "force" the push
  (http://stackoverflow.com/questions/5509543/how-do-i-properly-force-a-git-push).
+
+git config user.name // Show git username
+git config --list // Show git configuration
+
+git config --global user.name "Mark Young" // Set global username
+git config --global user.name // Confirm username
+
+git config --global user.email "mark.young@ii.co.uk" // Set global email
+git config --global user.email // Confirm email
+
+
