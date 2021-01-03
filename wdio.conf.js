@@ -1,6 +1,9 @@
 const timeout = process.env.DEBUG ? 99999999 : 30000;
 
 exports.config = {
+  // featureFlags: {
+  //   specFiltering: true,
+  // },
   //
   // ====================
   // Runner Configuration
@@ -19,7 +22,7 @@ exports.config = {
   // NPM script (see https://docs.npmjs.com/cli/run-script) then the current working
   // directory is where your package.json resides, so `wdio` will be called from there.
   //
-  specs: ['./test/**/*.ts'],
+  specs: ['./test/specs/**/*.ts'],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -51,10 +54,10 @@ exports.config = {
       // maxInstances can get overwritten per capability. So if you have an in-house Selenium
       // grid with only 5 firefox instances available you can make sure that not more than
       // 5 instances get started at a time.
-      maxInstances: 1,
+      maxInstances: 3,
       //
       browserName: 'chrome',
-      acceptInsecureCerts: true,
+      //acceptInsecureCerts: true,
     },
   ],
   //
@@ -64,7 +67,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error
-  logLevel: 'debug',
+  logLevel: 'error',
   //
   // Warns when a deprecated command is used
   deprecationWarnings: true,
@@ -105,16 +108,16 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter.html
-  reporters: ['spec'],
-  //   'spec',
-  //   [
-  //     'allure',
-  //     {
-  //       outputDir: 'allure-results',
-  //       disableWebdriverStepsReporting: true,
-  //     },
-  //   ],
-  // ],
+  reporters: [
+    'spec',
+    [
+      'allure',
+      {
+        outputDir: 'allure-results',
+        disableWebdriverStepsReporting: true,
+      },
+    ],
+  ],
   //
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
@@ -154,9 +157,9 @@ exports.config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {Array.<String>} specs List of spec file paths that are to be run
    */
-  // before: function (capabilities, specs) {
-  //   require('ts-node').register({ files: true });
-  // },
+  before: function (capabilities, specs) {
+    require('ts-node').register({ files: true });
+  },
   /**
    * Runs before a WebdriverIO command gets executed.
    * @param {String} commandName hook command name
