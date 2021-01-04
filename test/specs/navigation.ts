@@ -1,14 +1,13 @@
 import { expect } from 'chai';
 
-describe('Homepage', function () {
-  it('should load properly', function () {
-    // Load the page
+describe('ii homepage', () => {
+  it('Checking the page title is correct', () => {
     browser.url('https://ii.co.uk');
-    const browserTitle = browser.getTitle();
-    //console.log('This is my browser title' + browserTitle);
-    
+    const title = browser.getTitle();
+    console.log('Page Title = ' + title);
 
-    // Get the title of the homepage, should be interactive investor – the UK’s number one flat-fee investment platform
-    expect(browser.getTitle).to.equal('interactive investor – the UK’s number one flat-fee investment platform');
+    expect(title).to.equal(
+      'interactive investor – the UK’s number one flat-fee investment platform'
+    );
   });
 });
