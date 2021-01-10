@@ -1,4 +1,6 @@
-const timeout = process.env.DEBUG ? 99999999 : 30000;
+//const { time } = require('console');
+
+const timeout = process.env.DEBUG ? 99999999 : 10000; // Code for browser.debug();
 
 exports.config = {
   // featureFlags: {
@@ -67,7 +69,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error
-  logLevel: 'error',
+  logLevel: 'debug',
   //
   // Warns when a deprecated command is used
   deprecationWarnings: true,
@@ -125,7 +127,8 @@ exports.config = {
     require: 'ts-node/register',
     compilers: ['tsconfig-paths/register'],
     ui: 'bdd',
-    timeout: timeout,
+    //timeout: process.env.DEBUG === 'true' ? 99999999 : 10000,
+    timeout: timeout // Code for browser.debug();
   },
   //
   // =====

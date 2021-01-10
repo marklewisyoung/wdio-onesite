@@ -1,0 +1,16 @@
+*Debug mode
+
+Insert: browser.debug();
+into test
+
+Once browser has stopped:
+'The execution has stopped!
+You can now go into the browser or use the command line as REPL
+(To exit, press ^C again or type .exit)'
+
+In the vscode terminal enter:
+
+$('//span[text()="Log in"]').isExisting();
+true / false
+
+To check if element exists on the page
