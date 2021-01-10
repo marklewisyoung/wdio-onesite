@@ -1,6 +1,5 @@
 import { assert, expect } from 'chai';
-import LoginPage from './pages/LogInPage';
-// const Auth = require('../pageObjects/Auth.page');
+import LoginPage from '../pages/LogInPage';
 
 // Login to the Research page
 // Navigate to the research page
