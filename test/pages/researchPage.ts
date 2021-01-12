@@ -1,6 +1,6 @@
-import Page from './BasePage';
+import Page from './basePage';
 
-class LoginPage extends Page {
+class researchPage extends Page {
   open() {
     super.open(`https://research.ii.co.uk/`);
   }
@@ -15,9 +15,8 @@ class LoginPage extends Page {
   get loginNav() {
     return $(`//span[text()="Log in"]`);
   }
-
   get researchAccountLogin() {
-    return $(`//*[@id="site-modal-container"]/div/div/div/div[1]/p[2]/button`);
+    return $(`//span[text()="research account login"]`);
   }
   get username() {
     return $(`//input[@name="email"]`);
@@ -31,12 +30,12 @@ class LoginPage extends Page {
   get loginErrorMessage() {
     return $(`//span[text()="Wrong email or password."]`);
   }
+  get headerStatus() {
+    return $(`//span[text()="Account"]`);
+  }
 
-  // (1/2)
   // These were meant to be part of the super constructor inheriting from the base page. I will give you 1 of the 2 marks but strictly speaking
   // you haven;t done what the test asked you to do
-
-  //get loginErrorMessage() { return $('span*=Wrong email or password.'); } // Behaves weirdly in QA, test in Live
 }
 
-export default new LoginPage();
+export default new researchPage();
