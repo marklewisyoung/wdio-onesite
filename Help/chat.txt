@@ -1,0 +1,48 @@
+Chat with Ryan on async sync
+
+Ryan
+we use sync rather than async
+2:47
+we were using async when we started with Nightwatch, it was ok but not full proof
+
+Mark  2:48 PM
+Ok Thanks. So to check if a link is working you would click() it? Not check the response that came back (generally)
+
+Ryan  2:48 PM
+yeah , even in async we were having to do that in a lot of cases, we usually use a waitUntil() method that gives us really good stability
+
+Mark  2:49 PM
+Perfect thanks for that.
+
+
+Ryan  2:49 PM
+driver.waitUntil(() => {
+          return driver.isKeyboardShown() === false;
+        }, {
+          timeout: 5000,
+          timeoutMsg: 'expected keyboard to not be shown',
+        });
+:ok_hand::skin-tone-2:
+1
+
+2:49
+
+or
+
+2:49
+driver.waitUntil(() => {
+      return $(this.locators.archiveButtonText(index)).getText() !== text;
+    }, {
+      timeout: 5000,
+      timeoutMsg: 'Message archive button not working?',
+    });
+2:49
+its used alot
+
+we also use other waits, WDIO stuff like
+2:51
+$(this.locators.archiveButtonText(index)).waitForDisplayed();
+
+2:51
+but the other wait is good as you can specifically wait for something you are
+expecting to load as a result of a click, and far more stable than WDIO waits

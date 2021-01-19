@@ -1,30 +1,57 @@
 import { assert, expect } from 'chai';
-import iihomepage from 'test/pages/iihomepage';
-import iiHomePage from 'test/pages/iihomepage';
+import iiHomePage from 'test/pages/iiHomepage';
 
 describe('ii Home page tests', function () {
-  beforeEach(function () {
+  // before(function () {
+  //   iiHomePage.acceptCookies.click();
+  // });
+  before(function () {
     iiHomePage.open();
+    //browser.maximizeWindow();
     iiHomePage.acceptCookies.click();
+  });
+  it('Check page title is correct ', function () {
+    const pageTitle = expect(browser.getTitle()).equals(
+      'interactive investor – the UK’s number one flat-fee investment platform'
+    );
+  });
+  it('Check page url is correct', function () {
+    const iiHomePageURL = expect(browser.getUrl()).equals(
+      'https://www.ii.co.uk/');
+      //console.log('Home page URL = ' + iiHomePageURL);
+  });
+  it('Get all links in the services menu and assert', function () {
+    iiHomePage.clickServicesDropDown.click();
+    browser.pause(1000);
+    //iiHomePage.getTextForALinks;
+    //iiHomePage.ChildElementsText;
+    //console.log(iiHomePage.specificChildElement(2).getText());
+    //iiHomePage.childElementsArray;
+    //console.log(iiHomePage.childElementsinArraySplit);
+
+    // Code to get Url's from services dropdown and print to console
+    const links = $$('.css-1gypnlj>div>a');
+    const urls = links.map((link) => link.getAttribute('href'));
+
+    urls.forEach((url) => {
+      console.log(url);
+    });
+  });
+  xit('Click the links in the services menu', function () {
+    iiHomePage.tradingAccountLink.click(); // Click Trading Account
+    iiHomePage.verifyTradingAccount.isDisplayed();
+  });
+  xit('Check the elements on the ii home page', function () {
+    iiHomePage.loginOverlay.getHTML();
   });
   xit('Should let you click the Login button', function () {
     iiHomePage.mainLogin.click();
 
     browser.pause(2000);
   });
-  xit('Check the elements on the ii home page', function () {
-    iiHomePage.loginOverlay.getHTML();
-  });
-  it('Check all dropdown menu items are present on the Services menu', function () {
-    iiHomePage.clickServicesDropDown.click();
-    browser.pause(2000);
-    iihomepage.clickPensionsDropDown.click();
-    browser.pause(2000);
-    iiHomePage.servicesDropDown.getHTML();
-  
-    
-  });
 });
+
+// //'span[contains(@class, "name of Text")]']
 
 // browser.maximizeWindow();
 //     browser.url('https://www.ii.co.uk/home');

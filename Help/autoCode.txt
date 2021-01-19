@@ -1,0 +1,51 @@
+Looping through elements in a dropdown menu
+
+// Get <a> elements and loop through
+  // 1. Using 2 methods - parent / child getters
+  get parent() {
+    return $('.css-1gypnlj');
+    // '.css-1gypnlj>div:nth-of-type(1)'
+  }
+  get childElements() {
+    return this.parent.$$('a'); //$$ Find '<a> tag' elements from parent
+  }
+  get getTextForALinks() {
+    return this.childElements.filter((element) => {
+      console.log(element.getText());
+    });
+  }
+  // 2. Alternate way - select child elements directly
+  get childElementsOnly() {
+    return $$('.css-1gypnlj>div>a');
+  }
+  get ChildElementsText() {
+    return this.childElementsOnly.filter((element) => {
+      console.log(element.getText());
+    });
+  }
+  specificChildElement(index) {
+    return this.parent.$(`a:nth-child(${index})`);
+  }
+
+Adding elements to an array using .map and .split 
+
+  // 3. Add 'a' links to an array - .map
+   get childElementsArray() {
+    return this.childElementsOnly.map((element) => {
+      console.log(element.getText());
+    });
+  }
+   // 4. Add 'a' links to an array - .split('\n')
+  get childElementsinArraySplit() {
+    return this.parent.getText().split('\n');
+  }
+
+
+// Code to get Url's from services dropdown and print to console
+const links = $$('.css-1gypnlj>div>a');
+const urls = links.map(link => link.getAttribute('href'));
+
+    urls.forEach(url => {
+      console.log(url);
+    });
+  });
