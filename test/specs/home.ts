@@ -11,18 +11,22 @@ describe('ii Home page tests', function () {
     iiHomePage.acceptCookies.click();
   });
   it('Check page title is correct ', function () {
-    const pageTitle = expect(browser.getTitle()).equals(
+    const iiHomePageTitle = expect(browser.getTitle()).equals(
       'interactive investor – the UK’s number one flat-fee investment platform'
     );
   });
   it('Check page url is correct', function () {
     const iiHomePageURL = expect(browser.getUrl()).equals(
       'https://www.ii.co.uk/');
-      //console.log('Home page URL = ' + iiHomePageURL);
   });
-  it('Get all links in the services menu and assert', function () {
+   xit('Check page header is correct', function () {
+     const iiHomePageHeader = $('img[alt="Welcome to interactive investor"]').getAttribute('text');
+     console.log('Header text = ' + iiHomePageHeader);
+     // Revisit this
+     expect(iiHomePageHeader).equals('Welcome to interactive investor');
+   });
+  it('Get all links in the services menu and assert they are correct', function () {
     iiHomePage.clickServicesDropDown.click();
-    browser.pause(1000);
     //iiHomePage.getTextForALinks;
     //iiHomePage.ChildElementsText;
     //console.log(iiHomePage.specificChildElement(2).getText());
@@ -53,11 +57,6 @@ describe('ii Home page tests', function () {
 
 // //'span[contains(@class, "name of Text")]']
 
-// browser.maximizeWindow();
-//     browser.url('https://www.ii.co.uk/home');
-
-//     let acceptCookies = $(`//span[text()="Accept"]`);
-//     acceptCookies.click();
 
 //     let mainLogin = $('span=Log in');
 //     mainLogin.click();

@@ -4,22 +4,39 @@ import researchPage from '../pages/researchPage';
 // Login to the Research page
 // Navigate to the research page
 describe('Navigate to the Research page and login', function () {
-  it('Should let you navigate to the login page', function () {
+  beforeEach(function () {
     researchPage.open();
     researchPage.loginNav.click();
-    researchPage.researchAccountLogin.click();
-    //browser.pause(2000); // use browser.waitUntil rather than pause
-    // researchPage.loginWithCredentials.
+    researchPage.researchAccountLogin.click(); // Research Login credentials box appears
+    browser.pause(2000);
+    // const loggedIn = researchPage.headerStatus.getText();
+    // if (loggedIn === 'Account') {
+    //   researchPage.logoutResearchAccount;
+    // }
+    // researchPage.loginWithCredentials(
+    //   `youngmarklewis@gmail.com`,
+    //   `Testing123!`
+  });
+  afterEach(function () {
+    researchPage.logoutResearchAccount();
+  });
+  it('Confirm user is logged in using correct credentials', function () {
     researchPage.loginWithCredentials(
       `youngmarklewis@gmail.com`,
       `Testing123!`
     );
-  });
-  it('Confirm user is logged in using correct credentials', function () {
-    let loginText = researchPage.headerStatus.getText();
+    const loginText = researchPage.headerStatus.getText();
     expect(loginText).to.equal(`Account`);
   });
-  xit('Should not log in and error with a missing username', function () {});
+  xit('Should let you logout from the research page', function () {
+    researchPage.logoutResearchAccount();
+    browser.pause(2000);
+  });
+  xit('Should not log in and error with a missing username', function () {
+    researchPage.loginWithCredentials(`youngmarklewis@gmail.co`, `Testing12!`);
+    const failedLoginText = researchPage.logInError.getText();
+    console.log('Failed login text = ' + failedLoginText);
+  });
   xit('Should not log in and error with a missing password', function () {});
 });
 

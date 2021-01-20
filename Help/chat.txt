@@ -46,3 +46,59 @@ $(this.locators.archiveButtonText(index)).waitForDisplayed();
 2:51
 but the other wait is good as you can specifically wait for something you are
 expecting to load as a result of a click, and far more stable than WDIO waits
+
+
+Page Objects
+
+Mark  10:31 AM
+Morning, please can I ask you another auto question? In terms of overall set up do we store 'locators' all in one page object or are divided across multiple page objetcs?
+
+Ryan  10:34 AM
+sure
+10:34
+multiple, always multiple
+10:34
+so for instance on mobile its divided up per screen
+10:35
+for web it would be divided per page
+10:35
+morning
+
+Mark  10:40 AM
+Sure thank you that seems to be the industry standard (following the react way) and that was the way I was doing it but just wanted to make sure :slightly_smiling_face:
+
+Ryan  10:41 AM
+yeah helps to break things down, and just makes more sense all round
+10:41
+otherwise you would end up with a huge page object
+
+10:42
+Oh one more thing do we use the 'super' key word?
+
+Ryan  10:42 AM
+yeah , just in the constructor, for example...
+10:43
+class SecureMessagesScreen extends Screen<SecureMessageListScreenLocators> {
+  constructor() {
+    super({
+      content: "~secure-messages-list-screen",
+      messageList: "~secure-messages-list",
+      header: "~secure-messages-list-screen-header",
+      headerTitle: "~header-title",
+      inboxMessages: "~secure-messages-tabs-INBOX",
+      sentMessages: "~secure-messages-tabs-SENT",
+      archive: "~secure-messages-tabs-ARCHIVE",
+      filterToggle: "~secure-messages-filter-button",
+      createMessageButton: "~header-right-button",
+      backButton: "~header-back-button",
+      sentTabContent: "~messages-sent-tab-content",
+      secureMessage: (index) => `~secure-messages-list-item-${index}`,
+      secureMessageSubject: (index) => `~secure-messages-list-item-${index}-subject`,
+      secureMessageTopic: (index) => `~secure-messages-list-item-${index}-topic`,
+      secureMessageBody: (index) => `~secure-messages-list-item-${index}-body`,
+    });
+  }
+
+
+Mark  10:43 AM
+Thanks for the example
