@@ -39,22 +39,22 @@ class researchPage extends Page {
     return $(`//button[@type="submit"]`);
   }
   get logoutResearchButton() {
-    return $('//span[text()="Research log out"]');
+    return $(`//span[text()="Research log out"]`);
   }
   get headerStatus() {
     return $(`//span[text()="Account"]`);
   }
   get incorrectEmailPassword() {
-    return $('.animated.fadeInUp>span');
+    return $(`//span[text()="Wrong email or password."]`);
   }
   get blankEmailEntered() {
-    return $('');
+    return $(`#auth0-lock-error-msg-email .auth0-lock-error-invalid-hint`);
   }
   get blankPasswordEntered() {
-    return $('');
+    return $(`#auth0-lock-error-msg-password .auth0-lock-error-invalid-hint`);
   }
   // .animated.fadeInUp>Span
-  // //span[text()="Wrong email or password."
+  // //span[text()="Wrong email or password."]
   // #auth0-lock-error-msg-email .auth0-lock-error-invalid-hint
   // #auth0-lock-error-msg-password .auth0-lock-error-invalid-hint
 

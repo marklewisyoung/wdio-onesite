@@ -8,33 +8,30 @@ describe('Navigate to the Research page and login', function () {
     researchPage.open();
     researchPage.loginNav.click();
     researchPage.researchAccountLogin.click(); // Research Login credentials box appears
-
-    // const loggedIn = researchPage.headerStatus.getText();
-    // if (loggedIn === 'Account') {
-    //   researchPage.logoutResearchAccount;
-    // }
   });
-  afterEach(function () { // Add condition for after each?
-    researchPage.logoutResearchAccount();
-  });
-  xit('Confirm user is logged in using correct credentials', function () {
+  // afterEach(function () {
+  //   researchPage.logoutResearchAccount();
+  // });
+  it('Confirm user is logged in using correct credentials', function () {
     researchPage.loginWithCredentials(
       `youngmarklewis@gmail.com`,
       `Testing123!`
     );
     const loginText = researchPage.headerStatus.getText();
     expect(loginText).to.equal(`Account`);
+    researchPage.logoutResearchAccount();
   });
   xit('Test', function () {
     // researchPage.logoutResearchAccount();
     // browser.pause(2000);
   });
-  it('Should not log in and error with an incorrect username', function () {
-    researchPage.loginWithCredentials(`testemail@gmail.com`, `Testing123!`);
-    researchPage.incorrectEmailPassword.isDisplayed();
+  it('Should not log in and error with an incorrect credentials', function () {
+    researchPage.loginWithCredentials(`testemail2@gmail.com`, `Testing123!`);
+    researchPage.incorrectEmailPassword.waitForDisplayed();
     const failedLoginText = researchPage.incorrectEmailPassword.getText();
-    expect(failedLoginText).to.equal(`Wrong email or password.`);
+    expect(failedLoginText).to.equal(`WRONG EMAIL OR PASSWORD.`);
     console.log('Failed login text = ' + failedLoginText);
+    browser.back();
     
   });
   xit('Should not log in and error with a missing password', function () {});
