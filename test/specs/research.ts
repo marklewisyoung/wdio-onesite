@@ -8,19 +8,16 @@ describe('Navigate to the Research page and login', function () {
     researchPage.open();
     researchPage.loginNav.click();
     researchPage.researchAccountLogin.click(); // Research Login credentials box appears
-    browser.pause(2000);
+
     // const loggedIn = researchPage.headerStatus.getText();
     // if (loggedIn === 'Account') {
     //   researchPage.logoutResearchAccount;
     // }
-    // researchPage.loginWithCredentials(
-    //   `youngmarklewis@gmail.com`,
-    //   `Testing123!`
   });
-  afterEach(function () {
+  afterEach(function () { // Add condition for after each?
     researchPage.logoutResearchAccount();
   });
-  it('Confirm user is logged in using correct credentials', function () {
+  xit('Confirm user is logged in using correct credentials', function () {
     researchPage.loginWithCredentials(
       `youngmarklewis@gmail.com`,
       `Testing123!`
@@ -28,14 +25,17 @@ describe('Navigate to the Research page and login', function () {
     const loginText = researchPage.headerStatus.getText();
     expect(loginText).to.equal(`Account`);
   });
-  xit('Should let you logout from the research page', function () {
-    researchPage.logoutResearchAccount();
-    browser.pause(2000);
+  xit('Test', function () {
+    // researchPage.logoutResearchAccount();
+    // browser.pause(2000);
   });
-  xit('Should not log in and error with a missing username', function () {
-    researchPage.loginWithCredentials(`youngmarklewis@gmail.co`, `Testing12!`);
-    const failedLoginText = researchPage.logInError.getText();
+  it('Should not log in and error with an incorrect username', function () {
+    researchPage.loginWithCredentials(`testemail@gmail.com`, `Testing123!`);
+    researchPage.incorrectEmailPassword.isDisplayed();
+    const failedLoginText = researchPage.incorrectEmailPassword.getText();
+    expect(failedLoginText).to.equal(`Wrong email or password.`);
     console.log('Failed login text = ' + failedLoginText);
+    
   });
   xit('Should not log in and error with a missing password', function () {});
 });
