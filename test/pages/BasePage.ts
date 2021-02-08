@@ -10,8 +10,4 @@ export default Page;
 //     constructor(locators) {
 //         this.locators = locators;
 //     }
-
-//     get h1() {
-//         return $('h1').getText();
-//     }
-// }
+// don't know why you commented this out, you were meant to use this base page as it was

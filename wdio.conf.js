@@ -69,7 +69,7 @@ exports.config = {
   // Define all options that are relevant for the WebdriverIO instance here
   //
   // Level of logging verbosity: trace | debug | info | warn | error
-  logLevel: 'debug',
+  logLevel: 'warn',
   //
   // Warns when a deprecated command is used
   deprecationWarnings: true,
@@ -128,7 +128,7 @@ exports.config = {
     compilers: ['tsconfig-paths/register'],
     ui: 'bdd',
     //timeout: process.env.DEBUG === 'true' ? 99999999 : 10000,
-    timeout: timeout // Code for browser.debug();
+    timeout: timeout, // Code for browser.debug();
   },
   //
   // =====
@@ -181,7 +181,14 @@ exports.config = {
    * Function to be executed before a test (in Mocha/Jasmine) or a step (in Cucumber) starts.
    * @param {Object} test test details
    */
-  // beforeTest: function (test) {
+  // beforeTest: function () {
+  //   const chai = require('chai');
+  //   const chaiWebdriver = require('chai-webdriverio').default;
+  //   chai.use(chaiWebdriver(browser));
+
+  //   global.assert = chai.assert;
+  //   global.should = chai.should;
+  //   global.expect = chai.expect;
   // },
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
@@ -199,11 +206,11 @@ exports.config = {
    * Function to be executed after a test (in Mocha/Jasmine) or a step (in Cucumber) starts.
    * @param {Object} test test details
    */
-  afterTest: function (test) {
-    if (test.error !== undefined) {
-      browser.takeScreenshot();
-    }
-  },
+  // afterTest: function (test) {
+  //   if (test.error !== undefined) {
+  //     browser.takeScreenshot();
+  //   }
+  // },
   /**
    * Hook that gets executed after the suite has ended
    * @param {Object} suite suite details

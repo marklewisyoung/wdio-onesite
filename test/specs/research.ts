@@ -23,18 +23,35 @@ describe('Navigate to the Research page and login', function () {
   });
   xit('Test', function () {
     // researchPage.logoutResearchAccount();
-    // browser.pause(2000);
+
   });
   it('Should not log in and error with an incorrect credentials', function () {
-    researchPage.loginWithCredentials(`testemail2@gmail.com`, `Testing123!`);
+    researchPage.loginWithCredentials(`testemail3@gmail.com`, `Testing123!`);
     researchPage.incorrectEmailPassword.waitForDisplayed();
     const failedLoginText = researchPage.incorrectEmailPassword.getText();
     expect(failedLoginText).to.equal(`WRONG EMAIL OR PASSWORD.`);
-    console.log('Failed login text = ' + failedLoginText);
-    browser.back();
-    
+    //browser.back();
   });
-  xit('Should not log in and error with a missing password', function () {});
+  it('Should not log in and error with a missing email', function () {
+    researchPage.loginWithCredentials(
+      ``,
+      `Testing123`
+    );
+    researchPage.blankEmailEntered.waitForDisplayed();
+    const missingEmail = researchPage.blankEmailEntered.getText();
+    console.log('Error Message = ' + missingEmail);
+    expect(missingEmail).to.equal(`Can't be blank`)
+
+  });
+  it('Should not log in and error with a missing password', function () {
+    researchPage.loginWithCredentials(
+      `youngmarklewis@gmail.com`,
+      ``
+    );
+    researchPage.blankPasswordEntered.waitForDisplayed();
+    const missingPassword = researchPage.blankPasswordEntered.getText();
+    expect(missingPassword).to.equal(`Can't be blank`)
+  });
 });
 
 // [0-0] 2021-01-09T17:28:20.851Z ERROR webdriver: Request failed with status 400 due to element click intercepted: element click intercepted: Element <span>...</span> is not clickable at point (1047, 40). Other element would receive the click: <div aria-modal="true" class="css-cxr37u" role="dialog">...</div>

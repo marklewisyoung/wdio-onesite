@@ -51,7 +51,8 @@ class iiHomePage extends Page {
       console.log(element.getText());
     });
   }
-  // 2. Select child elements directly
+
+  // 2. Select child elements directly in services menu
   get childElementsOnly() {
     return $$('.css-1gypnlj>div>a');
   }
@@ -70,23 +71,39 @@ class iiHomePage extends Page {
       console.log(element.getText());
     });
   }
-  // 4. Add 'a' links to an array - .split('\n')
-  get childElementsinArraySplit() {
+  // 4. Get text from links to an array from services menu- .split('\n') $
+  // SPLIT THIS WORKS!
+  get textElementsFromServicesSplit() {
     return this.parent.getText().split('\n');
   }
-  // Check for broken links in services menu
-  
-  // ******************************
-  // ******************************
-
-  // Pensions Elements
-  get clickPensionsDropDown() {
-    return $('.css-hafks1 li:nth-of-type(2)');
+  // 5. Get text from links to an array from services menu- .map $$
+  textElementsFromServicesMap() {
+    const servicesMapArray: any[] = []; // define array as a string array
+    this.childElementsOnly.map((element) =>
+      servicesMapArray.push(element.getText())
+    );
+    return servicesMapArray;
   }
-  // Research Elements
-  get clickResearchDropDown() {
-    return $('.css-hafks1 li:nth-of-type(3)');
+  // 6. Add 'a' links to an array from services menu- .map $$
+  aElementsFromServicesMap() {
+    const servicesMapArrayA: any[] = [];
+    this.childElementsOnly.map((element) =>
+      servicesMapArrayA.push(element.getAttribute('href'))
+    );
+    return servicesMapArrayA;
   }
 }
+
+// ******************************
+
+// 5. Get Text for items in services dropdown, add to array and assert they are correct
+// childElementsArrayAssert() {
+//   const servicesArray = [];
+//   this.childElementsOnly.map((element) =>
+//     servicesArray.push(element.getText(){
+
+//     })
+//   return servicesArray;
+// }
 
 export default new iiHomePage();
