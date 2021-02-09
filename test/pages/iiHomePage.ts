@@ -44,7 +44,7 @@ class iiHomePage extends Page {
     // '.css-1gypnlj>div:nth-of-type(1)'
   }
   get childElements() {
-    return this.parent.$$('a'); //$$ Find '<a> tag' elements from parent
+    return this.parent.$$('a'); //$$ Return all '<a> tag' elements from parent
   }
   get getTextForALinks() {
     return this.childElements.filter((element) => {
@@ -65,12 +65,12 @@ class iiHomePage extends Page {
     return this.parent.$(`a:nth-child(${index})`);
   }
 
-  // 3. Add 'a' links to an array - .map
+  // 3. Add 'a' links to an array from services menu - .map $$
+  // THIS WORKS 09/02 - REPLACE 5. BELOW
   get childElementsArray() {
-    return this.childElementsOnly.map((element) => {
-      console.log(element.getText());
-    });
+    return this.childElementsOnly.map((element) => element.getText());
   }
+
   // 4. Get text from links to an array from services menu- .split('\n') $
   // SPLIT THIS WORKS!
   get textElementsFromServicesSplit() {
@@ -78,7 +78,7 @@ class iiHomePage extends Page {
   }
   // 5. Get text from links to an array from services menu- .map $$
   textElementsFromServicesMap() {
-    const servicesMapArray: any[] = []; // define array as a string array
+    const servicesMapArray: string[] = []; // define array as a string array
     this.childElementsOnly.map((element) =>
       servicesMapArray.push(element.getText())
     );
@@ -91,6 +91,13 @@ class iiHomePage extends Page {
       servicesMapArrayA.push(element.getAttribute('href'))
     );
     return servicesMapArrayA;
+  }
+  // 3. Add 'a' links to an array from services menu - .map $$
+  // THIS WORKS 09/02 - REPLACE 6. ABOVE
+  get hrefElementsFromServicesMap() {
+    return this.childElementsOnly.map((element) =>
+      element.getAttribute('href')
+    );
   }
 }
 
