@@ -13,14 +13,6 @@ class iiHomePage extends Page {
   get loginOverlay() {
     return $('.css-d7smja');
   }
-  //Instance of Services
-  // servicesMenu() {
-  //   this.clickServicesDropDown.waitForDisplayed();
-  //   this.clickServicesDropDown.click();
-  //   this.tradingAccountLink.click();
-  // }
-
-  // Services Elements
   get clickServicesDropDown() {
     return $('.css-hafks1>li:nth-of-type(1)');
   }
@@ -64,37 +56,19 @@ class iiHomePage extends Page {
   specificChildElement(index) {
     return this.parent.$(`a:nth-child(${index})`);
   }
-
-  // 3. Add 'a' links to an array from services menu - .map $$
-  // THIS WORKS 09/02 - REPLACE 5. BELOW
-  get childElementsArray() {
-    return this.childElementsOnly.map((element) => element.getText());
-  }
-
   // 4. Get text from links to an array from services menu- .split('\n') $
   // SPLIT THIS WORKS!
   get textElementsFromServicesSplit() {
     return this.parent.getText().split('\n');
   }
-  // 5. Get text from links to an array from services menu- .map $$
-  textElementsFromServicesMap() {
-    const servicesMapArray: string[] = []; // define array as a string array
-    this.childElementsOnly.map((element) =>
-      servicesMapArray.push(element.getText())
-    );
-    return servicesMapArray;
+  // 1. Add text to an array from services menu - .map $$
+  // THIS WORKS 09/02
+  get textElementsServicesMenu() {
+    return this.childElementsOnly.map((element) => element.getText());
   }
-  // 6. Add 'a' links to an array from services menu- .map $$
-  aElementsFromServicesMap() {
-    const servicesMapArrayA: any[] = [];
-    this.childElementsOnly.map((element) =>
-      servicesMapArrayA.push(element.getAttribute('href'))
-    );
-    return servicesMapArrayA;
-  }
-  // 3. Add 'a' links to an array from services menu - .map $$
-  // THIS WORKS 09/02 - REPLACE 6. ABOVE
-  get hrefElementsFromServicesMap() {
+  // 2. Add 'a' / 'href' links to an array from services menu - .map $$
+  // THIS WORKS 09/02
+  get hrefElementsServicesMenu() {
     return this.childElementsOnly.map((element) =>
       element.getAttribute('href')
     );

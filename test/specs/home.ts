@@ -53,42 +53,12 @@ describe('ii Home page tests', function () {
       'Ethical Investing',
     ]);
   });
-  // 5. MAP - THIS WORKS!!
-  xit('Get all links (text) in the services menu and assert they are correct MAP', function () {
+  // 1. MAP - THIS WORKS WITH chai expect USE THIS
+  it('Get (text) in the services menu and assert they are correct MAP', function () {
     iiHomePage.clickServicesDropDown.click();
-    console.log('LOG!!!', iiHomePage.textElementsFromServicesMap());
-    const servicesArrayText = iiHomePage.textElementsFromServicesMap;
-    expect(servicesArrayText).to.deep.equal([
-      // DOESN'T WORK WITH ASSERTION
-      'Trading Account',
-      'Stocks and Shares ISA',
-      'SIPP',
-      'Junior ISA',
-      'See all ii Accounts',
-      'Our Charges',
-      'Investing with ii',
-      'Transferring to ii',
-      'International Investing',
-      'Regular Investing',
-      'Live Pricing',
-      'IPOs',
-      'Ethical Investing',
-    ]);
-  });
-  // REMOVE - Replace with 
-  // 6. MAP - THIS WORKS!!
-  xit('Get all links (Href) in the services menu and assert they are correct MAP', function () {
-    iiHomePage.clickServicesDropDown.click();
-    //console.log(iiHomePage.aElementsFromServicesMap());
-    const servicesArrayA = iiHomePage.aElementsFromServicesMap;
-    //chaiExpect(servicesArrayA).to.deep.equal DOESN'T WORK WITH ASSERTION
-  });
-  // 3. MAP - THIS WORKS WITH chai expect (previously chaiExpect) USE THIS
-  xit('Get all links (text) in the services menu and assert they are correct MAP', function () {
-    iiHomePage.clickServicesDropDown.click();
-    const testMapArray = iiHomePage.childElementsArray; // childElementsArray is an array $$
-    console.log(testMapArray);
-    expect(testMapArray).to.eql([
+    const servicesMapArrayText = iiHomePage.textElementsServicesMenu; // childElementsArray is an array $$
+    console.log(servicesMapArrayText);
+    expect(servicesMapArrayText).to.eql([
       // DOES WORK WITH ASSERTION!
       'Trading Account',
       'Stocks and Shares ISA',
@@ -104,13 +74,14 @@ describe('ii Home page tests', function () {
       'IPOs',
       'Ethical Investing',
     ]);
+    browser.pause(3000);
   });
-  // 3. MAP - THIS WORKS WITH chai expect (previously chaiExpect) USE THIS
-  it('Should let you click the Login button', function () {
-    iiHomePage.clickServicesDropDown.click();
-    const testMapArrayHref = iiHomePage.hrefElementsFromServicesMap;
-    console.log(testMapArrayHref);
-    expect(testMapArrayHref).to.eql([
+  // 2. MAP - THIS WORKS WITH chai expect USE THIS
+  it('Get all links (href) from the services menu and assert they are correct MAP', function () {
+    //iiHomePage.clickServicesDropDown.click();
+    const servicesMapArrayHref = iiHomePage.hrefElementsServicesMenu;
+    console.log(servicesMapArrayHref);
+    expect(servicesMapArrayHref).to.eql([
       // DOES WORK WITH ASSERTION!
       'https://www.ii.co.uk/ii-accounts/trading-account',
       'https://www.ii.co.uk/ii-accounts/isa',
