@@ -21,40 +21,13 @@ describe('ii Home page tests', function () {
       'https://www.ii.co.uk/'
     );
   });
-  xit('Check page header is correct', function () {
-    const iiHomePageHeader = $(
-      'img[alt="Welcome to interactive investor"]'
-    ).getAttribute('text');
-    console.log('Header text = ' + iiHomePageHeader);
-    // Revisit this
-    expect(iiHomePageHeader).equals('Welcome to interactive investor');
-  });
-  // 4. SPLIT - THIS WORKS!!
-  xit('Get all links (text) in the services menu and assert they are correct SPLIT', function () {
+  it('Get links from parent', function () {
     iiHomePage.clickServicesDropDown.click();
-    const servicesArray = iiHomePage.textElementsFromServicesSplit;
-    console.log('LOG!!!', iiHomePage.textElementsFromServicesSplit);
-    expect(servicesArray).to.deep.equal([
-      // DOES WORK WITH ASSERTION!
-      'Our Accounts',
-      'Trading Account',
-      'Stocks and Shares ISA',
-      'SIPP',
-      'Junior ISA',
-      'See all ii Accounts',
-      'Investing',
-      'Our Charges',
-      'Investing with ii',
-      'Transferring to ii',
-      'International Investing',
-      'Regular Investing',
-      'Live Pricing',
-      'IPOs',
-      'Ethical Investing',
-    ]);
+    const parentLinks = iiHomePage.parent.getText();
+    console.log('The LINKS =', parentLinks);
   });
   // 1. MAP - THIS WORKS WITH chai expect USE THIS
-  it('Get (text) in the services menu and assert they are correct MAP', function () {
+  xit('Get (text) in the services menu and assert they are correct MAP', function () {
     iiHomePage.clickServicesDropDown.click();
     const servicesMapArrayText = iiHomePage.textElementsServicesMenu; // childElementsArray is an array $$
     console.log(servicesMapArrayText);
@@ -77,8 +50,8 @@ describe('ii Home page tests', function () {
     browser.pause(3000);
   });
   // 2. MAP - THIS WORKS WITH chai expect USE THIS
-  it('Get all links (href) from the services menu and assert they are correct MAP', function () {
-    //iiHomePage.clickServicesDropDown.click();
+  xit('Get all links (href) from the services menu and assert they are correct MAP', function () {
+    //iiHomePage.clickServicesDropDown.click(); // Breaks if running full suite
     const servicesMapArrayHref = iiHomePage.hrefElementsServicesMenu;
     console.log(servicesMapArrayHref);
     expect(servicesMapArrayHref).to.eql([
@@ -102,8 +75,6 @@ describe('ii Home page tests', function () {
 
 // //'span[contains(@class, "name of Text")]']
 
-//     let mainLogin = $('span=Log in');
-//     mainLogin.click();
 //     let researchNavButton = $('[title="Research Account Log In"]');
 
 //     researchNavButton.waitForExist();

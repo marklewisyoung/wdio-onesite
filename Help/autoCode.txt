@@ -35,11 +35,37 @@ Adding elements to an array using .map and .split
       console.log(element.getText());
     });
   }
-   // 4. Add 'a' links to an array - .split('\n')
-  get childElementsinArraySplit() {
+
+ // 4. Get text from links to an array from services menu- .split('\n') $
+  // SPLIT THIS WORKS!
+  get textElementsFromServicesSplit() {
     return this.parent.getText().split('\n');
   }
 
+  // 4. SPLIT - THIS WORKS!!
+  xit('Get all links (text) in the services menu and assert they are correct SPLIT', function () {
+    iiHomePage.clickServicesDropDown.click();
+    const servicesArray = iiHomePage.textElementsFromServicesSplit;
+    console.log('LOG!!!', iiHomePage.textElementsFromServicesSplit);
+    expect(servicesArray).to.deep.equal([
+      // DOES WORK WITH ASSERTION!
+      'Our Accounts',
+      'Trading Account',
+      'Stocks and Shares ISA',
+      'SIPP',
+      'Junior ISA',
+      'See all ii Accounts',
+      'Investing',
+      'Our Charges',
+      'Investing with ii',
+      'Transferring to ii',
+      'International Investing',
+      'Regular Investing',
+      'Live Pricing',
+      'IPOs',
+      'Ethical Investing',
+    ]);
+  });
 
 // Code to get Url's from services dropdown and print to console
 const links = $$('.css-1gypnlj>div>a');

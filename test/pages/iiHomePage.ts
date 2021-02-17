@@ -4,44 +4,21 @@ class iiHomePage extends Page {
   open() {
     super.open('./');
   }
+  // Accept Cookies
   get acceptCookies() {
     return $('//span[text()="Accept"]');
   }
-  get mainLogin() {
-    return $('span=Log in');
-  }
-  get loginOverlay() {
-    return $('.css-d7smja');
-  }
+  // Click services dropdown 
   get clickServicesDropDown() {
     return $('.css-hafks1>li:nth-of-type(1)');
   }
-  get servicesDropDown() {
-    return $('.css-1gypnlj');
-  }
-  get tradingAccountLink() {
-    return $('//a[@title="Trading Account"]');
-  }
-  get tradingPageText() {
-    return $('//strong[text()="Free Trading Account"]');
-  }
-  get verifyTradingAccount() {
-    return $('h1.Free Trading Account'); //change this!
-  }
-
-  // Get <a> elements and loop through
+  // Services Menu - get links in dropdown
   // 1. Using 2 methods - parent / child getters
   get parent() {
     return $('.css-1gypnlj');
-    // '.css-1gypnlj>div:nth-of-type(1)'
   }
   get childElements() {
     return this.parent.$$('a'); //$$ Return all '<a> tag' elements from parent
-  }
-  get getTextForALinks() {
-    return this.childElements.filter((element) => {
-      console.log(element.getText());
-    });
   }
 
   // 2. Select child elements directly in services menu
@@ -56,11 +33,7 @@ class iiHomePage extends Page {
   specificChildElement(index) {
     return this.parent.$(`a:nth-child(${index})`);
   }
-  // 4. Get text from links to an array from services menu- .split('\n') $
-  // SPLIT THIS WORKS!
-  get textElementsFromServicesSplit() {
-    return this.parent.getText().split('\n');
-  }
+  
   // 1. Add text to an array from services menu - .map $$
   // THIS WORKS 09/02
   get textElementsServicesMenu() {
