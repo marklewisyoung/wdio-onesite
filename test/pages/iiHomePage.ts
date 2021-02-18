@@ -1,9 +1,13 @@
-import Page from './basePage';
+import BasePage from './base.page';
 
-class iiHomePage extends Page {
-  open() {
-    super.open('./');
+class iiHomePage extends BasePage {
+  // open() {
+  //   super.open('./');
+  // }
+  constructor() {
+    super('./')
   }
+
   // Accept Cookies
   get acceptCookies() {
     return $('//span[text()="Accept"]');
@@ -30,6 +34,7 @@ class iiHomePage extends Page {
       console.log(element.getText());
     });
   }
+  // Select a specific Element
   specificChildElement(index) {
     return this.parent.$(`a:nth-child(${index})`);
   }

@@ -1,9 +1,9 @@
-class Page {
-    open(path) {
-        browser.url(path);
-    }
-}
-export default Page;
+// class Page {
+//     open(path) {
+//         browser.url(path);
+//     }
+// }
+// export default Page;
 
 // export default class BasePage {
 //     locators: any;

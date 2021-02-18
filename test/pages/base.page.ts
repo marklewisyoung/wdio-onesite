@@ -1,26 +1,32 @@
 // Base page to test super constructor
-//const { URL } = require('url')
-import ElementUtil from '../util/elementUtil';
 
-class BasePage extends ElementUtil{
-  open(path) {
-    browser.url(path);
+//import ElementUtil from '../util/elementUtil';
+
+//class BasePage extends ElementUtil{
+//   open(path) {
+//     browser.url(path);
+//   }
+// }
+//export default class BasePage {
+
+//   class BasePage {
+//   locators: any;
+//   constructor(locators) {
+//     this.locators = locators;
+//   }
+//   open(path) {
+//     browser.url(path);
+//   }
+// }
+
+class BasePage {
+  path: any;
+  constructor(path) {
+    this.path = path;
+  }
+  load() {
+    browser.url(this.path)
   }
 }
 
-// class basePage {
-//     path: any;
-//     url: any;
-
-//     constructor(path) {
-//         this.path = path;
-
-//         this.url = new URL(path, browser.config.baseUrl)
-//     }
-//     load() {
-//         browser.url(this.path);
-//     }
-// }
-
-export default BasePage;
-//module.exports = Generic
+export default BasePage

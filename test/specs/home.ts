@@ -7,27 +7,25 @@ describe('ii Home page tests', function () {
   //   iiHomePage.acceptCookies.click();
   // });
   before(function () {
-    iiHomePage.open();
-    //browser.maximizeWindow();
+    iiHomePage.load(); //open
     iiHomePage.acceptCookies.click();
   });
   it('Check page title is correct ', function () {
-    const iiHomePageTitle = expect(browser.getTitle()).equals(
+    expect(browser.getTitle()).equals(
       'interactive investor – the UK’s number one flat-fee investment platform'
     );
   });
   it('Check page url is correct', function () {
-    const iiHomePageURL = expect(browser.getUrl()).equals(
-      'https://www.ii.co.uk/'
-    );
+    expect(browser.getUrl()).equals('https://www.ii.co.uk/');
+    // Test it block
   });
-  it('Get links from parent', function () {
+  xit('Get links from parent', function () {
     iiHomePage.clickServicesDropDown.click();
-    const parentLinks = iiHomePage.parent.getText();
+    const parentLinks = iiHomePage.textElementsServicesMenu;
     console.log('The LINKS =', parentLinks);
   });
   // 1. MAP - THIS WORKS WITH chai expect USE THIS
-  xit('Get (text) in the services menu and assert they are correct MAP', function () {
+  it('Get (text) in the services menu and assert they are correct MAP', function () {
     iiHomePage.clickServicesDropDown.click();
     const servicesMapArrayText = iiHomePage.textElementsServicesMenu; // childElementsArray is an array $$
     console.log(servicesMapArrayText);
@@ -46,11 +44,11 @@ describe('ii Home page tests', function () {
       'Live Pricing',
       'IPOs',
       'Ethical Investing',
+      'Refer a friend',
     ]);
-    browser.pause(3000);
   });
   // 2. MAP - THIS WORKS WITH chai expect USE THIS
-  xit('Get all links (href) from the services menu and assert they are correct MAP', function () {
+  it('Get all links (href) from the services menu and assert they are correct MAP', function () {
     //iiHomePage.clickServicesDropDown.click(); // Breaks if running full suite
     const servicesMapArrayHref = iiHomePage.hrefElementsServicesMenu;
     console.log(servicesMapArrayHref);
@@ -69,6 +67,7 @@ describe('ii Home page tests', function () {
       'https://www.ii.co.uk/live-pricing',
       'https://www.ii.co.uk/ipos',
       'https://www.ii.co.uk/ethical-investing',
+      'https://www.ii.co.uk/ii-for-friends/customer',
     ]);
   });
 });
