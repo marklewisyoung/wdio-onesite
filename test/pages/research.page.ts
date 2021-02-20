@@ -1,12 +1,11 @@
-import Page from './basePage';
+import BasePage from './base.page';
 
-class researchPage extends Page {
-  open() {
-    super.open(`https://research.ii.co.uk/`);
+class ResearchPage extends BasePage {
+  constructor() {
+    super('https://research.ii.co.uk/');
   }
-
+  // Method to login to research
   loginWithCredentials(username, password) {
-    // Method to login to research
     this.username.waitForDisplayed();
     this.username.addValue(username);
     this.password.waitForDisplayed();
@@ -14,9 +13,8 @@ class researchPage extends Page {
     this.loginButton.waitForDisplayed();
     this.loginButton.click();
   }
-
+  // Method to logout of research
   logoutResearchAccount() {
-    // Method to logout of research
     this.headerStatus.waitForDisplayed();
     this.headerStatus.click();
     this.logoutResearchButton.waitForDisplayed();
@@ -58,8 +56,6 @@ class researchPage extends Page {
   // #auth0-lock-error-msg-email .auth0-lock-error-invalid-hint
   // #auth0-lock-error-msg-password .auth0-lock-error-invalid-hint
 
-  // These were meant to be part of the super constructor inheriting from the base page. I will give you 1 of the 2 marks but strictly speaking
-  // you haven't done what the test asked you to do
 }
 
-export default new researchPage();
+export default new ResearchPage;

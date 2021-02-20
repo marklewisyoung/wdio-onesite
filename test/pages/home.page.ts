@@ -1,9 +1,6 @@
 import BasePage from './base.page';
 
-class iiHomePage extends BasePage {
-  // open() {
-  //   super.open('./');
-  // }
+class HomePage extends BasePage {
   constructor() {
     super('./')
   }
@@ -53,16 +50,4 @@ class iiHomePage extends BasePage {
   }
 }
 
-// ******************************
-
-// 5. Get Text for items in services dropdown, add to array and assert they are correct
-// childElementsArrayAssert() {
-//   const servicesArray = [];
-//   this.childElementsOnly.map((element) =>
-//     servicesArray.push(element.getText(){
-
-//     })
-//   return servicesArray;
-// }
-
-export default new iiHomePage();
+export default new HomePage;

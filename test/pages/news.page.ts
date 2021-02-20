@@ -5,8 +5,8 @@ import BasePage from './base.page';
 const elementUtil = new ElementUtil();
 
 class NewsPage extends BasePage {
-  open() {
-    super.open('./stock-market-news');
+  constructor() {
+    super('./stock-market-news');
   }
 
   // Page Locators:
@@ -25,4 +25,3 @@ class NewsPage extends BasePage {
 }
 
 export default new NewsPage;
-//export default new NewsPage()

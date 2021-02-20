@@ -1,14 +1,14 @@
 //import { expect as chaiExpect } from 'chai';
 import { expect } from 'chai';
-import iiHomePage from 'test/pages/iiHomepage';
+import HomePage from 'test/pages/home.page';
 
 describe('ii Home page tests', function () {
   // before(function () {
-  //   iiHomePage.acceptCookies.click();
+  //   HomePage.acceptCookies.click();
   // });
   before(function () {
-    iiHomePage.load(); //open
-    iiHomePage.acceptCookies.click();
+    HomePage.load(); //open
+    HomePage.acceptCookies.click();
   });
   it('Check page title is correct ', function () {
     expect(browser.getTitle()).equals(
@@ -20,14 +20,14 @@ describe('ii Home page tests', function () {
     // Test it block
   });
   xit('Get links from parent', function () {
-    iiHomePage.clickServicesDropDown.click();
-    const parentLinks = iiHomePage.textElementsServicesMenu;
+    HomePage.clickServicesDropDown.click();
+    const parentLinks = HomePage.textElementsServicesMenu;
     console.log('The LINKS =', parentLinks);
   });
   // 1. MAP - THIS WORKS WITH chai expect USE THIS
   it('Get (text) in the services menu and assert they are correct MAP', function () {
-    iiHomePage.clickServicesDropDown.click();
-    const servicesMapArrayText = iiHomePage.textElementsServicesMenu; // childElementsArray is an array $$
+    HomePage.clickServicesDropDown.click();
+    const servicesMapArrayText = HomePage.textElementsServicesMenu; // childElementsArray is an array $$
     console.log(servicesMapArrayText);
     expect(servicesMapArrayText).to.eql([
       // DOES WORK WITH ASSERTION!
@@ -49,8 +49,8 @@ describe('ii Home page tests', function () {
   });
   // 2. MAP - THIS WORKS WITH chai expect USE THIS
   it('Get all links (href) from the services menu and assert they are correct MAP', function () {
-    //iiHomePage.clickServicesDropDown.click(); // Breaks if running full suite
-    const servicesMapArrayHref = iiHomePage.hrefElementsServicesMenu;
+    //HomePage.clickServicesDropDown.click(); // Breaks if running full suite
+    const servicesMapArrayHref = HomePage.hrefElementsServicesMenu;
     console.log(servicesMapArrayHref);
     expect(servicesMapArrayHref).to.eql([
       // DOES WORK WITH ASSERTION!
