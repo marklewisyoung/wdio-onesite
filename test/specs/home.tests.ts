@@ -1,74 +1,56 @@
 //import { expect as chaiExpect } from 'chai';
-import { expect } from 'chai';
+import { assert, expect } from 'chai';
 import HomePage from 'test/pages/home.page';
+import constants from 'test/util/constants';
 
 describe('ii Home page tests', function () {
   // before(function () {
   //   HomePage.acceptCookies.click();
   // });
   before(function () {
-    HomePage.load(); //open
-    HomePage.acceptCookies.click();
+    HomePage.load();
+    HomePage.clickAcceptCookies();
   });
+  // Working on this
   it('Check page title is correct ', function () {
-    expect(browser.getTitle()).equals(
-      'interactive investor – the UK’s number one flat-fee investment platform'
+    const title = HomePage.getPageTitle();
+    console.log(title);
+    // expect(title).to.equal(
+    //   'interactive investor – the UK’s number one flat-fee investment platform'
+    // ); // This also works
+    assert.equal(
+      constants.homePageTitleText,
+      title,
+      'title is not found'
     );
   });
   it('Check page url is correct', function () {
-    expect(browser.getUrl()).equals('https://www.ii.co.uk/');
-    // Test it block
+    const pageUrl = HomePage.getPageUrl();
+    console.log(pageUrl);
+    // expect(pageUrl).equal('https://www.ii.co.uk/'); // This also works
+    assert.equal(constants.homePageUrl, pageUrl, 'page url not found');
   });
-  xit('Get links from parent', function () {
-    HomePage.clickServicesDropDown.click();
-    const parentLinks = HomePage.textElementsServicesMenu;
-    console.log('The LINKS =', parentLinks);
-  });
+  
+  // Element Util working on THIS!
   // 1. MAP - THIS WORKS WITH chai expect USE THIS
   it('Get (text) in the services menu and assert they are correct MAP', function () {
-    HomePage.clickServicesDropDown.click();
+    HomePage.clickServicesDropDown(); // Done
     const servicesMapArrayText = HomePage.textElementsServicesMenu; // childElementsArray is an array $$
     console.log(servicesMapArrayText);
-    expect(servicesMapArrayText).to.eql([
-      // DOES WORK WITH ASSERTION!
-      'Trading Account',
-      'Stocks and Shares ISA',
-      'SIPP',
-      'Junior ISA',
-      'See all ii Accounts',
-      'Our Charges',
-      'Investing with ii',
-      'Transferring to ii',
-      'International Investing',
-      'Regular Investing',
-      'Live Pricing',
-      'IPOs',
-      'Ethical Investing',
-      'Refer a friend',
-    ]);
+    expect(servicesMapArrayText).to.eql(constants.servicesTextArray);
   });
   // 2. MAP - THIS WORKS WITH chai expect USE THIS
   it('Get all links (href) from the services menu and assert they are correct MAP', function () {
     //HomePage.clickServicesDropDown.click(); // Breaks if running full suite
     const servicesMapArrayHref = HomePage.hrefElementsServicesMenu;
     console.log(servicesMapArrayHref);
-    expect(servicesMapArrayHref).to.eql([
-      // DOES WORK WITH ASSERTION!
-      'https://www.ii.co.uk/ii-accounts/trading-account',
-      'https://www.ii.co.uk/ii-accounts/isa',
-      'https://www.ii.co.uk/ii-accounts/sipp',
-      'https://www.ii.co.uk/ii-accounts/isa/junior-isa',
-      'https://www.ii.co.uk/ii-accounts',
-      'https://www.ii.co.uk/our-charges',
-      'https://www.ii.co.uk/investing-with-ii',
-      'https://www.ii.co.uk/investing-with-ii/transferring-to-ii',
-      'https://www.ii.co.uk/investing-with-ii/international-investing',
-      'https://www.ii.co.uk/investing-with-ii/regular-investing',
-      'https://www.ii.co.uk/live-pricing',
-      'https://www.ii.co.uk/ipos',
-      'https://www.ii.co.uk/ethical-investing',
-      'https://www.ii.co.uk/ii-for-friends/customer',
-    ]);
+    expect(servicesMapArrayHref).to.eql(constants.servicesLinksArray);
+  });
+  // Test Playground
+  xit('Get links from parent', function () {
+    HomePage.clickServicesDropDown;
+    const parentLinks = HomePage.textElementsServicesMenu;
+    console.log('The LINKS =', parentLinks);
   });
 });
 

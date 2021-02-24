@@ -1,8 +1,8 @@
 // News Page
-import ElementUtil from 'test/util/elementUtil';
+import ElementUtil from 'test/util/element';
 import BasePage from './base.page';
 
-const elementUtil = new ElementUtil();
+const news = new ElementUtil();
 
 class NewsPage extends BasePage {
   constructor() {
@@ -16,12 +16,12 @@ class NewsPage extends BasePage {
 
   // Page Actions:
   getPageTitle() {
-    return elementUtil.elementGetPageTitle();
+    return news.retrievePageTitle();
   }
 
   clickSignUpButton() {
-    return elementUtil.elementClick(this.signUpButton);
+    return news.elementClick(this.signUpButton);
   }
 }
 
-export default new NewsPage;
+export default new NewsPage();

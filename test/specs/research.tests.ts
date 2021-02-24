@@ -23,7 +23,6 @@ describe('Navigate to the Research page and login', function () {
   });
   xit('Test', function () {
     // ResearchPage.logoutResearchAccount();
-
   });
   it('Should not log in and error with an incorrect credentials', function () {
     ResearchPage.loginWithCredentials(`testemail3@gmail.com`, `Testing123!`);
@@ -33,27 +32,19 @@ describe('Navigate to the Research page and login', function () {
     //browser.back();
   });
   it('Should not log in and error with a missing email', function () {
-    ResearchPage.loginWithCredentials(
-      ``,
-      `Testing123`
-    );
+    ResearchPage.loginWithCredentials(``, `Testing123`);
     ResearchPage.blankEmailEntered.waitForDisplayed();
     const missingEmail = ResearchPage.blankEmailEntered.getText();
     console.log('Error Message = ' + missingEmail);
-    expect(missingEmail).to.equal(`Can't be blank`)
-
+    expect(missingEmail).to.equal(`Can't be blank`);
   });
   it('Should not log in and error with a missing password', function () {
-    ResearchPage.loginWithCredentials(
-      `youngmarklewis@gmail.com`,
-      ``
-    );
+    ResearchPage.loginWithCredentials(`youngmarklewis@gmail.com`, ``);
     ResearchPage.blankPasswordEntered.waitForDisplayed();
     const missingPassword = ResearchPage.blankPasswordEntered.getText();
-    expect(missingPassword).to.equal(`Can't be blank`)
+    expect(missingPassword).to.equal(`Can't be blank`);
   });
 });
-
 
 // should let you log in
 

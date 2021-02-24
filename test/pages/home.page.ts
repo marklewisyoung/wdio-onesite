@@ -1,16 +1,21 @@
 import BasePage from './base.page';
+import ElementUtil from '../util/element';
+
+const home = new ElementUtil();
 
 class HomePage extends BasePage {
   constructor() {
-    super('./')
+    super('./');
   }
+  // Page Locators
 
   // Accept Cookies
   get acceptCookies() {
     return $('//span[text()="Accept"]');
   }
-  // Click services dropdown 
-  get clickServicesDropDown() {
+
+  // Click services dropdown
+  get servicesDropDown() {
     return $('.css-hafks1>li:nth-of-type(1)');
   }
   // Services Menu - get links in dropdown
@@ -35,7 +40,7 @@ class HomePage extends BasePage {
   specificChildElement(index) {
     return this.parent.$(`a:nth-child(${index})`);
   }
-  
+
   // 1. Add text to an array from services menu - .map $$
   // THIS WORKS 09/02
   get textElementsServicesMenu() {
@@ -48,6 +53,23 @@ class HomePage extends BasePage {
       element.getAttribute('href')
     );
   }
+
+  // Page Actions
+  clickAcceptCookies() {
+    return home.elementClick(this.acceptCookies);
+  }
+
+  getPageTitle() {
+    return home.retrievePageTitle();
+  }
+
+  getPageUrl() {
+    return home.retrievePageUrl();
+  }
+
+  clickServicesDropDown() {
+    return home.elementClick(this.servicesDropDown);
+  }
 }
 
-export default new HomePage;
+export default new HomePage();

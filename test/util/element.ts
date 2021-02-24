@@ -1,7 +1,5 @@
-// Utilities 
-
-class ElementUtil {
-
+ class ElementUtil {
+   
     elementClick(element) {
         element.waitForDisplayed();
         element.click();
@@ -22,8 +20,12 @@ class ElementUtil {
         return element.isDisplayed();
     }
 
-    elementGetPageTitle() {
+    retrievePageTitle() {
         return browser.getTitle();
+    }
+
+    retrievePageUrl() {
+        return browser.getUrl();
     }
 
 }

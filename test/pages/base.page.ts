@@ -19,4 +19,3 @@ export default BasePage;
 //   }
 // }
 //export default class BasePage {
-

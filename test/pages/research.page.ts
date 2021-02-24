@@ -55,7 +55,6 @@ class ResearchPage extends BasePage {
   // //span[text()="Wrong email or password."]
   // #auth0-lock-error-msg-email .auth0-lock-error-invalid-hint
   // #auth0-lock-error-msg-password .auth0-lock-error-invalid-hint
-
 }
 
-export default new ResearchPage;
+export default new ResearchPage();
