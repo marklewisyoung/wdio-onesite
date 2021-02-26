@@ -70,6 +70,9 @@ class HomePage extends BasePage {
   clickServicesDropDown() {
     return home.elementClick(this.servicesDropDown);
   }
+  getElementsfromServicesMenu() {
+    return home.elementClick(this.childElements)
+  }
 }
 
 export default new HomePage();

@@ -47,12 +47,21 @@ describe('ii Home page tests', function () {
     expect(servicesMapArrayHref).to.eql(constants.servicesLinksArray);
   });
   // Test Playground
-  xit('Get links from parent', function () {
-    HomePage.clickServicesDropDown;
-    const parentLinks = HomePage.textElementsServicesMenu;
-    console.log('The LINKS =', parentLinks);
+  it('Click on all links in an array', function () {
+    //HomePage.clickServicesDropDown(); // Breaks if running full suite
+    const visitEachLink = HomePage.childElements;
+    visitEachLink.forEach((link) => {
+      link.click();
+    })
   });
 });
+
+// it('should fetch menu links and visit each page', () => {
+//   const links = $$('#menu a');
+//   links.forEach((link) => {
+//     link.click();
+//   });
+// });
 
 // //'span[contains(@class, "name of Text")]']
 
