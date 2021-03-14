@@ -9,7 +9,7 @@ Mark  2:48 PM
 Ok Thanks. So to check if a link is working you would click() it? Not check the response that came back (generally)
 
 Ryan  2:48 PM
-yeah , even in async we were having to do that in a lot of cases, we usually use a waitUntil() method that gives us really good stability
+yeah , even in async we were having to do that in a lot of cases, we usually use a waitUntil() method that gives us really good stability 
 
 Mark  2:49 PM
 Perfect thanks for that.

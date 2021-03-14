@@ -1,7 +1,9 @@
 //import { expect as chaiExpect } from 'chai';
 import { assert, expect } from 'chai';
+import homePage from 'test/pages/home.page';
 import HomePage from 'test/pages/home.page';
 import constants from 'test/util/constants';
+
 
 describe('ii Home page tests', function () {
   // before(function () {
@@ -11,18 +13,13 @@ describe('ii Home page tests', function () {
     HomePage.load();
     HomePage.clickAcceptCookies();
   });
-  // Working on this
   it('Check page title is correct ', function () {
     const title = HomePage.getPageTitle();
     console.log(title);
     // expect(title).to.equal(
     //   'interactive investor – the UK’s number one flat-fee investment platform'
     // ); // This also works
-    assert.equal(
-      constants.homePageTitleText,
-      title,
-      'title is not found'
-    );
+    assert.equal(constants.homePageTitleText, title, 'title is not found');
   });
   it('Check page url is correct', function () {
     const pageUrl = HomePage.getPageUrl();
@@ -30,7 +27,7 @@ describe('ii Home page tests', function () {
     // expect(pageUrl).equal('https://www.ii.co.uk/'); // This also works
     assert.equal(constants.homePageUrl, pageUrl, 'page url not found');
   });
-  
+
   // Element Util working on THIS!
   // 1. MAP - THIS WORKS WITH chai expect USE THIS
   it('Get (text) in the services menu and assert they are correct MAP', function () {
@@ -46,22 +43,50 @@ describe('ii Home page tests', function () {
     console.log(servicesMapArrayHref);
     expect(servicesMapArrayHref).to.eql(constants.servicesLinksArray);
   });
+
+  // *****************************************************************************************************
   // Test Playground
-  it('Click on all links in an array', function () {
+  // Page Action to re-use map method 14/03/21 - THIS WORKS
+  it.only('Test Map Method so that I can reuse', function () {
+    HomePage.clickServicesDropDown();
+    const servicesMapArrayTextt = HomePage.reuseMapServicesText();
+    console.log(servicesMapArrayTextt);
+    expect(servicesMapArrayTextt).to.eql(constants.servicesTextArray)
+  });
+  xit('Click on all links in an array', function () {
     //HomePage.clickServicesDropDown(); // Breaks if running full suite
     const visitEachLink = HomePage.childElements;
     visitEachLink.forEach((link) => {
       link.click();
-    })
+      //browser.back();
+      //HomePage.load();
+      //HomePage.clickServicesDropDown();
+      // 2 x for loops?
+    });
+  });
+
+  // Using Move to and Wait commands
+  // waitForDisplayed
+  xit('Click on services drop down menu and click link', function () {
+    homePage.clickServicesDropDown();
+    homePage.ourCharges.waitForDisplayed({ timeout: 1000 });
+    homePage.ourCharges.click();
+  });
+  // Using Move to and Wait commands
+  // waitUntil
+  xit('Click on services drop down menu and click link', function () {
+    homePage.clickServicesDropDown();
+    browser.pause(2000);
+    browser.waitUntil(
+      function () {
+        return homePage.ourCharges.getText() === 'Our Charges';
+      },
+      { timeout: 3000, timeoutMsg: 'Text is not shown' }
+    );
+    //expect(homePage.ourCharges).to.eql('Our Charges');
   });
 });
 
-// it('should fetch menu links and visit each page', () => {
-//   const links = $$('#menu a');
-//   links.forEach((link) => {
-//     link.click();
-//   });
-// });
 
 // //'span[contains(@class, "name of Text")]']
 
@@ -72,7 +97,5 @@ describe('ii Home page tests', function () {
 //     browser.pause(2000);
 
 //     let researchAccountLogin = $('//span[text()="Log in"]');
-//     //researchAccountLogin.scrollIntoView();
-//       researchAccountLogin.isClickable();
-//       browser.waitUntil(() => researchAccountLogin.isClickable())
-//     //browser.pause(2000);
+
+

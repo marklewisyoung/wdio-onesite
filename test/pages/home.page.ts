@@ -13,10 +13,17 @@ class HomePage extends BasePage {
   get acceptCookies() {
     return $('//span[text()="Accept"]');
   }
-
-  // Click services dropdown
+  // Click Services dropdown
   get servicesDropDown() {
     return $('.css-hafks1>li:nth-of-type(1)');
+  }
+  // Click Pensions dropdown
+  get pensionsDropDown() {
+    return $('.css-hafks1>li:nth-of-type(2)');
+  }
+  // Click Research dropdown
+  get researchDropDown() {
+    return $('.css-hafks1>li:nth-of-type(3)');
   }
   // Services Menu - get links in dropdown
   // 1. Using 2 methods - parent / child getters
@@ -40,7 +47,6 @@ class HomePage extends BasePage {
   specificChildElement(index) {
     return this.parent.$(`a:nth-child(${index})`);
   }
-
   // 1. Add text to an array from services menu - .map $$
   // THIS WORKS 09/02
   get textElementsServicesMenu() {
@@ -52,6 +58,9 @@ class HomePage extends BasePage {
     return this.childElementsOnly.map((element) =>
       element.getAttribute('href')
     );
+  }
+  get ourCharges() {
+    return $('a[title="Our Charges"]');
   }
 
   // Page Actions
@@ -70,8 +79,18 @@ class HomePage extends BasePage {
   clickServicesDropDown() {
     return home.elementClick(this.servicesDropDown);
   }
-  getElementsfromServicesMenu() {
-    return home.elementClick(this.childElements)
+  // Testing
+  // Page Action to re-use map method 14/03/21
+  reuseMapServicesText() {
+    return home.elementMapFunction(this.childElementsOnly)
+  }
+  // Using Move to and Wait commands
+  clickOurCharges() {
+    return home.elementClick(this.ourCharges);
+  }
+  // waitUntil test
+  waitForCharges() {
+    return this.ourCharges;
   }
 }
 

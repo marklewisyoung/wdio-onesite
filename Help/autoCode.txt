@@ -75,3 +75,15 @@ const urls = links.map(link => link.getAttribute('href'));
       console.log(url);
     });
   });
+
+// Using Move to and Wait commands
+// waitForDisplayed
+  it('Click on services drop down menu and click link', function () {
+    homePage.clickServicesDropDown();
+    homePage.ourCharges.waitForDisplayed({ timeout: 1000 });
+    homePage.ourCharges.click();
+  });
+});
+
+
+
