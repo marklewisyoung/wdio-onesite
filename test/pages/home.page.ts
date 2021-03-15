@@ -82,7 +82,10 @@ class HomePage extends BasePage {
   // Testing
   // Page Action to re-use map method 14/03/21
   reuseMapServicesText() {
-    return home.elementMapFunction(this.childElementsOnly)
+    return home.elementTextMap(this.childElementsOnly)
+  }
+  reuseMapServicesLink() {
+    return home.elementLinkMap(this.childElementsOnly)
   }
   // Using Move to and Wait commands
   clickOurCharges() {

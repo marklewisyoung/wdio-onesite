@@ -27,9 +27,13 @@ class ElementUtil {
     return browser.getUrl();
   }
   // Test Function to re-use map method 14/03/21
-  elementMapFunction = (mapElement) => {
+  elementTextMap = (mapElement) => {
     return mapElement.map((element) => element.getText());
-  };
+  }
+  elementLinkMap = (mapElement) => {
+    return mapElement.map((element) => element.getAttribute('href'));
+  }
+
 }
 
 export default ElementUtil;

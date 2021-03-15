@@ -4,7 +4,6 @@ import homePage from 'test/pages/home.page';
 import HomePage from 'test/pages/home.page';
 import constants from 'test/util/constants';
 
-
 describe('ii Home page tests', function () {
   // before(function () {
   //   HomePage.acceptCookies.click();
@@ -47,11 +46,17 @@ describe('ii Home page tests', function () {
   // *****************************************************************************************************
   // Test Playground
   // Page Action to re-use map method 14/03/21 - THIS WORKS
-  it.only('Test Map Method so that I can reuse', function () {
+  it.only('Test Map Text Method so that I can reuse', function () {
     HomePage.clickServicesDropDown();
     const servicesMapArrayTextt = HomePage.reuseMapServicesText();
     console.log(servicesMapArrayTextt);
-    expect(servicesMapArrayTextt).to.eql(constants.servicesTextArray)
+    expect(servicesMapArrayTextt).to.eql(constants.servicesTextArray);
+  });
+  it('Test Map Link Method so that I can reuse', function () {
+    HomePage.clickServicesDropDown();
+    const servicesMapArrayHreff = HomePage.reuseMapServicesLink();
+    console.log(servicesMapArrayHreff);
+    expect(servicesMapArrayHreff).to.eql(constants.servicesLinksArray);
   });
   xit('Click on all links in an array', function () {
     //HomePage.clickServicesDropDown(); // Breaks if running full suite
@@ -87,7 +92,6 @@ describe('ii Home page tests', function () {
   });
 });
 
-
 // //'span[contains(@class, "name of Text")]']
 
 //     let researchNavButton = $('[title="Research Account Log In"]');
@@ -97,5 +101,3 @@ describe('ii Home page tests', function () {
 //     browser.pause(2000);
 
 //     let researchAccountLogin = $('//span[text()="Log in"]');
-
-
